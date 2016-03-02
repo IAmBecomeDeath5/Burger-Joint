@@ -13,40 +13,75 @@ import java.util.ArrayList;
  */
 public class Burger extends Food
 {
-   private ArrayList<Integer> extras = new ArrayList<Integer>();
+   private ArrayList<String> extraNames;
+   private ArrayList<Integer> extras;
+   private int burger;
+   private String namesList = "";
    
    Burger()
    {
-   
+        extraNames = new ArrayList<>();
+        extras = new ArrayList<>();
    }
    
-   //probs get extras names in eventually 
-   Burger(String item, double cost, ArrayList<Integer> toppings)
+   
+   Burger(String item, double cost)
     {
         super(item, cost);
-        extras = toppings;
-        //arraylist of extras in main?
+        extraNames = new ArrayList<>();
+        extras = new ArrayList<>();
     }
 
    //setters
-   void addExtra(Integer toppings)
+   void setExtra(int toppings)
    {
        extras.add(toppings);
    }
    
+   void setBurger(int burgerType)
+    {
+        burger = burgerType;
+    }
+   
+   void setExtraNames(String namesOfExtras)
+   {
+       extraNames.add(namesOfExtras);
+   }
    //getters
    ArrayList getExtras()
    {
        return extras;
    }
    
+   ArrayList getExtraNames()
+   {
+       return extraNames;
+   }
+   
    @Override
    double getPrice()
    {
        double total = 0;
-       //for loop that goes through an if else with the condtion being the value of each cell in the array for extras
-       //put check for proper number in main
-       for (int i : extras)
+
+       if(burger == 1)
+           total += 4.00;
+       else if(burger == 2)
+           total += 5.50;
+       else if(burger == 3)
+           total += 5.85;
+       else if(burger == 4)
+           total += 4.50;
+       else if(burger == 5)
+           total += 4.95;
+       else if(burger == 6)
+           total += 5.00;
+       else if(burger == 7)
+           total+= 5.25;
+       else
+           total += 0;
+       
+       //for (int i : extras)
+       for(int i = 0; i < extras.size(); i++)
        {
            //extra cheese
            if(extras.get(i) == 1)
@@ -75,6 +110,10 @@ public class Burger extends Food
            //bacon
            else if(extras.get(i) == 7)
            total += 1.50;
+           
+           //none
+           else 
+           total += 0;    
        }
        
        return total;
@@ -102,5 +141,19 @@ public class Burger extends Food
       extras.clear();
   }
    
+  
+  //to string
+  
+  @Override
+  public String toString()
+  {
+              
+       for (int i = 0; i < extras.size(); i++) 
+       {
+           namesList += (i+1)+ " " + extraNames.get(i) + "\n";
+       }
+       
+       return getName() + "\n--- Extras ---\n" + namesList;
+  }
+  
 }
-
