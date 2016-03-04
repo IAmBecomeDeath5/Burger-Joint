@@ -1,19 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author TJ Foldes
- */
+	File name: Sides.java
+	Short description: Restaurant kiosk
+	IST 242 Assignment: project 1
+	@author TJ Foldes, Derick Osborn
+	@version 1.00 DATE 3/4/16
+*/
+
 public class Sides extends Food
 {
     private int size;
- 
+    
+    //constructors 
     Sides()
-    {}
+    {
+    
+    }
     
     Sides(String item, double cost, int sizeType)
     {
@@ -21,11 +22,13 @@ public class Sides extends Food
         size = sizeType;
     }
     
+    //setters
     void setSize(int sizeType)
     {
         size = sizeType;
     }
     
+    //getters
     int getSize()
     {
         return size;
@@ -34,7 +37,7 @@ public class Sides extends Food
     @Override
     public String toString()
     {
-        return getName();
+        return String.format(getName() + "  $%.2f", getPrice());
     }
     
 

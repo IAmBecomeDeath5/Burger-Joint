@@ -1,41 +1,47 @@
+/**
+	File name: MealTotal.java
+	Short description: Restaurant kiosk
+	IST 242 Assignment: project 1
+	@author TJ Foldes, Derick Osborn
+	@version 1.00 DATE 3/4/16
+*/
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author TJ Foldes
- */
 public class MealTotal 
 {
     private ArrayList<Food> food;
     private ArrayList<Combo> combo;
     private boolean comboMade;
     
+    //constructors
     MealTotal()
     {
         food = new ArrayList<Food>();
         combo = new ArrayList<Combo>();
     }
 
+    // setter/adders
     void addFood(Food f)
     {
         food.add(f);
         comboMade = checkForCombos(); 
     }
     
+    void addCombo(Combo c)
+    {
+        combo.add(c);
+    }
+    
+    
+    //getters
     double calcTotal()
     {
         double total = 0;
         
-        for(Food f : food)
+        for (int i = 0; i < food.size(); i++) 
         {
-            total += f.getPrice();
+            total += food.get(i).getPrice();
         }
         
         for(Combo c: combo)
@@ -46,12 +52,14 @@ public class MealTotal
         return total;
     }
     
-    boolean madeMeal()      /////////////////THHHHHIIIISSSS
+    //to send back
+    boolean madeMeal()
     {
         return comboMade;
     }
     
-    boolean checkForCombos() //call in mains checkout to make a combo there too?
+    //check for combos made with single items
+    boolean checkForCombos() 
     {
             Burger burger = null;
             Sides side = null;
@@ -70,7 +78,7 @@ public class MealTotal
                     
             }
 
-            if (burger == null || side == null || drink == null || drink.getSize() == side.getSize()) 
+            if (burger == null || side == null || drink == null || drink.getSize() != side.getSize()) 
                 return false;
          
             
@@ -84,4 +92,47 @@ public class MealTotal
                 return true;
             }
 	}
+    
+    //remove an order
+    void removeOrder(int index, int choice)
+    {
+        if(choice == 1)
+        food.remove(index);
+            
+        else
+        combo.remove(index);
+    }
+    
+    //for sizes
+    public ArrayList<Food> getFood() { return this.food; }
+    public ArrayList<Combo> getCombos() { return this.combo;}
+    
+    @Override
+    public String toString()
+    {
+        String orderList = "";
+        
+        //for combos made from single items
+        if(comboMade)
+        {
+           comboMade = false;
+           return combo.get(combo.size() - 1).toString();
+        }    
+        
+        else
+        {
+        for (int i = 0; i < food.size(); i++) 
+            {
+               orderList += (i+1)+ ". " + food.get(i).toString() + "\n";
+            }
+            
+            for (int i = 0; i < combo.size(); i++) 
+            {
+               orderList += (i+1)+ ". " + combo.get(i).toString() + "\n";
+            }
+            
+            return orderList;
+        }
+    }
 }
+

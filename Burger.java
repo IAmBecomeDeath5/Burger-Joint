@@ -1,23 +1,20 @@
+/**
+	File name: Burger.java
+	Short description: Restaurant kiosk
+	IST 242 Assignment: project 1
+	@author TJ Foldes, Derick Osborn
+	@version 1.00 DATE 3/4/16
+*/
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author TJ Foldes
- */
 public class Burger extends Food
 {
    private ArrayList<String> extraNames;
    private ArrayList<Integer> extras;
    private int burger;
-   private String namesList = "";
-   
+
+   //constructors 
    Burger()
    {
         extraNames = new ArrayList<>();
@@ -80,7 +77,6 @@ public class Burger extends Food
        else
            total += 0;
        
-       //for (int i : extras)
        for(int i = 0; i < extras.size(); i++)
        {
            //extra cheese
@@ -120,6 +116,9 @@ public class Burger extends Food
    }
    
    //item is what they select they want to remove
+   /*
+   did not use
+   
    void removeExtra(int item)
    {
        boolean found = false;
@@ -134,6 +133,7 @@ public class Burger extends Food
            }
        }
    }
+   */
    
   //clear extras 
   void clearExtras()
@@ -142,18 +142,16 @@ public class Burger extends Food
   }
    
   
-  //to string
-  
   @Override
   public String toString()
   {
-              
+        String namesList = "";
        for (int i = 0; i < extras.size(); i++) 
        {
            namesList += (i+1)+ " " + extraNames.get(i) + "\n";
        }
        
-       return getName() + "\n--- Extras ---\n" + namesList;
+       return String.format(getName() + "\n--- Extras ---\n" + namesList + getName() + " costs $%.2f" + "\n", getPrice());
   }
   
 }

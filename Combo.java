@@ -1,18 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author TJ Foldes
- */
+	File name: Combo.java
+	Short description: Restaurant kiosk
+	IST 242 Assignment: project 1
+	@author TJ Foldes, Derick Osborn
+	@version 1.00 DATE 3/4/16
+*/
+
 public class Combo 
 {
     private Sides sides1;
     private Drinks drinks1;
     private Burger burger1;
+    
+    //constructors
+    Combo()
+    {
+    
+    }
     
     Combo(Sides sides, Drinks drinks, Burger burger)
     {
@@ -27,7 +31,7 @@ public class Combo
         sides1 = sides;
     }
     
-    void setDrinkss(Drinks drinks)
+    void setDrinks(Drinks drinks)
     {
         drinks1 = drinks;
     }
