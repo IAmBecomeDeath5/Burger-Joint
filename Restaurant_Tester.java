@@ -48,37 +48,47 @@ public class Restaurant_Tester
             System.out.print("What is your choice 1 - 7: ");
             choice = in.nextInt();
             
+            //order a side
             if(choice == 1)
             {
                 orderSide();
             }
             
+            //order a drink
             else if(choice == 2)
             {
                 orderDrink();
             }
             
+            //order a burger
             else if(choice == 3)
             {
                 orderBurger();
             }
             
+            //order a meal
             else if(choice == 4)
             {
                 orderCombo();
             }
             
+            //remove an order
             else if(choice == 5)
             {
                 removeOrder();//remove code here
             }
             
-            //doesn't work
+            // Display the results
+            //calculations
+            //gets current total
             else if(choice == 6)
             {
                 System.out.printf("The current total is: $%.2f\n" ,mealTotal.calcTotal());
             }
             
+            //checkout
+            // Display the results
+            //calculations 
             else if(choice == 7)
             {
                 System.out.println("Checking out here is your order details");
@@ -86,25 +96,23 @@ public class Restaurant_Tester
                 System.out.printf("Total cost is: $%.2f\n", mealTotal.calcTotal());
             }
             
+            //error check
             else
                 System.out.println("Error, choice needs to be from 1 to 7 please try again");
             
         }while(choice != 7);
-        
        
-
-        // Calculations
-  
-
-        // Display the results
 
     }
     
     //remove an order
     static void removeOrder()
     {
+        //variables 
         int choice, index;
         System.out.println(mealTotal.toString());
+        
+        //user input combo or food item
         System.out.print("Would you like to remove 1. a combo or 2. a single item: ");
         choice = in.nextInt();
         
@@ -114,6 +122,7 @@ public class Restaurant_Tester
             choice = in.nextInt();
         }
         
+        //user input what specific item
         System.out.print("Choose what you would like to remove by its number or 0 to change nothing: ");
         index = in.nextInt();
         
@@ -131,6 +140,7 @@ public class Restaurant_Tester
             index = in.nextInt();
         }    
         
+        //do nothing
         if(choice == 0)
         {
             System.out.println("Nothing has been removed");
@@ -138,19 +148,18 @@ public class Restaurant_Tester
         
         else if(choice == 1)
         {
-            System.out.println("The combo " + mealTotal.getCombos().get(index - 1) + "was removed");    
-            //mealTotal.removeOrder((index - 1), choice);
+            System.out.println("The combo " + mealTotal.getCombos().get(index - 1) + "was removed");   
             mealTotal.getCombos().remove(index - 1);
         }
         
         else
         {
             System.out.println("The item " + mealTotal.getFood().get(index - 1) + " was removed");     
-//            mealTotal.removeOrder((index- 1), choice);
             mealTotal.getFood().remove(index - 1);
         }
     }
     
+    //order a combo
     static void orderCombo()
     {
         //variables
@@ -159,18 +168,21 @@ public class Restaurant_Tester
         Drinks drinks = new Drinks();
         Burger burger = new Burger();
         
-        
+        //menu
         System.out.println("Combo meals give you discounts off the items in the combo based on size\n");
         System.out.println("\n1. Small meal 10% off\n2. Medium meal 15% off\n3. Large meal 20% off");
-                System.out.print("What size would you like your Combo meal 1-3: ");
-                sizeType = in.nextInt();
+                
+        //user input
+        System.out.print("What size would you like your Combo meal 1-3: ");
+        sizeType = in.nextInt();
                 
                 while(sizeType > 3 || sizeType < 1)
                 {
                     System.out.print("Please enter a choice from 1 to 3: ");
                     sizeType = in.nextInt();
                 }
-                
+              
+                // size input 
                 if(sizeType == 1)
                 sizeName = "Small";
                 
@@ -184,6 +196,8 @@ public class Restaurant_Tester
                 drinks.setSize(sizeType);
                 
                 System.out.println("\n1. Fries\n2. Chili\n3. Mashed Potatos");
+                
+                //user input
                 System.out.print("What side would you like to order 1-3: ");
                 choiceItems = in.nextInt();
                 
@@ -193,6 +207,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //item
                 if(choiceItems == 1)
                     name = "Fries";
                
@@ -207,6 +222,8 @@ public class Restaurant_Tester
                 sides.setSize(sizeType);
                 
                 System.out.println("\n1. Coke\n2. Cherry Coke\n3. RootBear\n4. Sprite\n5. Vault");
+                
+                //user input
                 System.out.print("What soda would you like to order 1-5: ");
                 choiceItems = in.nextInt();
                 
@@ -216,6 +233,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //item
                 if(choiceItems == 1)
                     name = "Coke";
                 
@@ -237,6 +255,8 @@ public class Restaurant_Tester
                 System.out.println("\n1. $4.00 Classic Burger\n2. $5.50 Double Burger\n3. $5.85 Cowboy Burger"
                 + "\n4. $4.50 Chicken Sandwich\n5. $4.95 Spicy Chicken Sandwich"
                 + "\n6. $5.00 Bacon Burger\n7. $5.25 Devils Flame Grilled Burger");
+                
+                //user input
                 System.out.print("What burger would you like to order 1-7: ");
                 choiceItems = in.nextInt();
                 
@@ -246,6 +266,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //set burger
                 if(choiceItems == 1)
                 {
                     burger.setBurger(choiceItems);
@@ -292,6 +313,7 @@ public class Restaurant_Tester
                         + "\n7. $1.50 extra bacon" + "\n8. To stop adding extras");
                 System.out.print("What extras would you like to add to you burger 1-8: ");
                 
+                //go through adding extras to burger
                 do
                 {
                 sizeType = in.nextInt();
@@ -363,7 +385,7 @@ public class Restaurant_Tester
         //variables
         Sides sides = new Sides();
         
-        
+        //user input
         System.out.println("\n1. Fries\n2. Chili\n3. Mashed Potatos");
                 System.out.print("What side would you like to order 1-3: ");
                 choiceItems = in.nextInt();
@@ -374,6 +396,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //set item
                 if(choiceItems == 1)
                     name = "Fries";
                
@@ -394,6 +417,7 @@ public class Restaurant_Tester
                     sizeType = in.nextInt();
                 }
                 
+                //set size type
                 if(sizeType == 1)
                 sizeName = "Small";
                 
@@ -406,11 +430,11 @@ public class Restaurant_Tester
                 sides.setSize(sizeType);
                 sides.getPrice();
                 sides.setName(sizeName + " " + name);
-                
-//                sides = new Sides((sizeName + " " + name), cost, sizeType);
+               
                 food.add(sides);
-                mealTotal.addFood(sides); // this work maybe?
+                mealTotal.addFood(sides); 
                 
+                //meals made from single items
                 if(mealTotal.madeMeal())
                 {
                     System.out.println("A meal has been made out of these items for a discount: ");    
@@ -437,6 +461,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //set soda name
                 if(choiceItems == 1)
                     name = "Coke";
                 
@@ -452,6 +477,7 @@ public class Restaurant_Tester
                 else if(choiceItems == 5)
                     name = "Vault";
                 
+                //user input
                 System.out.println("\n1. $1.50 Small\n2. $2.00 Medium\n3. $2.50 Large");
                 System.out.print("What size would you like your drink 1-3: ");
                 sizeType = in.nextInt();
@@ -462,6 +488,7 @@ public class Restaurant_Tester
                     sizeType = in.nextInt();
                 }
                 
+                //set size
                 if(sizeType == 1)
                 sizeName = "Small";
                 
@@ -473,11 +500,12 @@ public class Restaurant_Tester
                 
                 drinks.setSize(sizeType);
                 drinks.setName(sizeName + " " + name);
-//                cost = drinks.getPrice();
-//                drinks = new Drinks((sizeName + " " + name), cost, sizeType);
+                
+                //add to totals
                 food.add(drinks);
                 mealTotal.addFood(drinks);
                 
+                //if a meal is made from items
                 if(mealTotal.madeMeal())
                 {
                     System.out.println("A meal has been made out of these items for a discount: ");    
@@ -492,8 +520,8 @@ public class Restaurant_Tester
     {   
         //variables
         Burger burger = new Burger();
-        // need combo for combo check tostring
         
+        //menu and user input
         System.out.println("\n1. $4.00 Classic Burger\n2. $5.50 Double Burger\n3. $5.85 Cowboy Burger"
                 + "\n4. $4.50 Chicken Sandwich\n5. $4.95 Spicy Chicken Sandwich"
                 + "\n6. $5.00 Bacon Burger\n7. $5.25 Devils Flame Grilled Burger");
@@ -506,6 +534,7 @@ public class Restaurant_Tester
                     choiceItems = in.nextInt();
                 }
                 
+                //set burger
                 if(choiceItems == 1)
                 {
                     burger.setBurger(choiceItems);
@@ -552,6 +581,7 @@ public class Restaurant_Tester
                         + "\n7. $1.50 extra bacon" + "\n8. To stop adding extras");
                 System.out.print("What extras would you like to add to you burger 1-8: ");
                 
+                //add extras
                 do
                 {
                 sizeType = in.nextInt();
@@ -563,7 +593,7 @@ public class Restaurant_Tester
                 }
                 
                 
-                //need to change to extras on burger array stuff, make so you can get more extras than one
+                //set extras
                 if(sizeType == 1)
                 {
                     burger.setExtra(sizeType); 
@@ -612,6 +642,7 @@ public class Restaurant_Tester
                 food.add(burger);
                 mealTotal.addFood(burger);
              
+                //for meal made from single items
                 if(mealTotal.madeMeal())
                 {
                     System.out.println("A meal has been made out of these items for a discount: ");
