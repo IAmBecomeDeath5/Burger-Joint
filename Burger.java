@@ -133,14 +133,14 @@ public class Burger extends Food
            }
        }
    }
-   */
+   
    
   //clear extras 
   void clearExtras()
   {
       extras.clear();
   }
-   
+  */ 
   
   @Override
   public String toString()
@@ -151,7 +151,7 @@ public class Burger extends Food
            namesList += (i+1)+ " " + extraNames.get(i) + "\n";
        }
        
-       return String.format(getName() + "\n--- Extras ---\n" + namesList + getName() + " costs $%.2f" + "\n", getPrice());
+       return String.format(getName() + "\n--- Extras ---\n" + namesList + getName() + " costs $%.2f", getPrice());
   }
   
 }

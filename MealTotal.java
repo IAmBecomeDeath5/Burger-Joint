@@ -111,16 +111,7 @@ public class MealTotal
     public String toString()
     {
         String orderList = "";
-        
-        //for combos made from single items
-        if(comboMade)
-        {
-           comboMade = false;
-           return combo.get(combo.size() - 1).toString();
-        }    
-        
-        else
-        {
+
         for (int i = 0; i < food.size(); i++) 
             {
                orderList += (i+1)+ ". " + food.get(i).toString() + "\n";
@@ -132,7 +123,6 @@ public class MealTotal
             }
             
             return orderList;
-        }
     }
 }
 

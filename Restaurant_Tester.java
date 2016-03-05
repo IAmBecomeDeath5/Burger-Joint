@@ -141,14 +141,14 @@ public class Restaurant_Tester
         }    
         
         //do nothing
-        if(choice == 0)
+        if(index == 0)
         {
             System.out.println("Nothing has been removed");
         }
         
         else if(choice == 1)
         {
-            System.out.println("The combo " + mealTotal.getCombos().get(index - 1) + "was removed");   
+            System.out.println("The combo " + mealTotal.getCombos().get(index - 1) + " was removed");   
             mealTotal.getCombos().remove(index - 1);
         }
         
@@ -169,7 +169,7 @@ public class Restaurant_Tester
         Burger burger = new Burger();
         
         //menu
-        System.out.println("Combo meals give you discounts off the items in the combo based on size\n");
+        System.out.println("Combo meals give you discounts off the items in the combo based on size");
         System.out.println("\n1. Small meal 10% off\n2. Medium meal 15% off\n3. Large meal 20% off");
                 
         //user input
@@ -375,7 +375,7 @@ public class Restaurant_Tester
                 
                 System.out.print(combo.toString());
                 mealTotal.addCombo(combo);
-                System.out.printf("The price of this combo meal is: $%.2f" + "\n",combo.getprice());
+                System.out.printf("\nThe price of this combo meal is: $%.2f" + "\n",combo.getprice());
     }
     
     
@@ -437,9 +437,8 @@ public class Restaurant_Tester
                 //meals made from single items
                 if(mealTotal.madeMeal())
                 {
-                    System.out.println("A meal has been made out of these items for a discount: ");    
-                    mealTotal.toString();
-                    mealTotal.checkForCombos();//to set back to false caz it won't let me hard code it back
+                    System.out.println("A meal has been made out of these items for a discount: ");
+                    System.out.println(mealTotal.getCombos().get(mealTotal.getCombos().size()- 1).toString());
                 }
                 
                 else
@@ -508,8 +507,8 @@ public class Restaurant_Tester
                 //if a meal is made from items
                 if(mealTotal.madeMeal())
                 {
-                    System.out.println("A meal has been made out of these items for a discount: ");    
-                    mealTotal.toString();
+                    System.out.println("A meal has been made out of these items for a discount: ");
+                    System.out.println(mealTotal.getCombos().get(mealTotal.getCombos().size()- 1).toString());
                 }
                 
                 else
@@ -646,13 +645,108 @@ public class Restaurant_Tester
                 if(mealTotal.madeMeal())
                 {
                     System.out.println("A meal has been made out of these items for a discount: ");
-                    mealTotal.toString();
+                    System.out.println(mealTotal.getCombos().get(mealTotal.getCombos().size()- 1).toString());
                 }
                 
                 else 
-                System.out.println(burger.toString() + "has been added");
+                System.out.println(burger.toString() + " has been added");
                 
     }
     
 }
 
+/*
+run:
+This program will act as a resturant meanu kiosk
+
+Welcome to The Burger Joint!
+What would you like to order?
+
+1. Order a side
+2. Order a drink
+3. Order a burger
+4. Order a meal
+5. Remove an order
+6. Get the current orders total
+7. Checkout
+What is your choice 1 - 7: 2
+
+1. Coke
+2. Cherry Coke
+3. RootBear
+4. Sprite
+5. Vault
+What soda would you like to order 1-5: 5
+
+1. $1.50 Small
+2. $2.00 Medium
+3. $2.50 Large
+What size would you like your drink 1-3: 3
+Large Vault  $2.50 has been added
+What is your choice 1 - 7: 3
+
+1. $4.00 Classic Burger
+2. $5.50 Double Burger
+3. $5.85 Cowboy Burger
+4. $4.50 Chicken Sandwich
+5. $4.95 Spicy Chicken Sandwich
+6. $5.00 Bacon Burger
+7. $5.25 Devils Flame Grilled Burger
+What burger would you like to order 1-7: 3
+
+1. $.50 extra cheese
+2. $.25 extra pickles
+3. $.30 extra tomatoes
+4. $.30 extra lettice
+5. $1.50 extra patty
+6. $.20 extra sauce
+7. $1.50 extra bacon
+8. To stop adding extras
+What extras would you like to add to you burger 1-8: 6
+4
+5
+2
+4
+8
+Cowboy Burger
+--- Extras ---
+1 extra sauce
+2 extra lettice
+3 extra patty
+4 extra pickles
+5 extra lettice
+Cowboy Burger costs $8.40
+has been added
+What is your choice 1 - 7: 6
+The current total is: $10.90
+What is your choice 1 - 7: 2
+
+1. Coke
+2. Cherry Coke
+3. RootBear
+4. Sprite
+5. Vault
+What soda would you like to order 1-5: 4
+
+1. $1.50 Small
+2. $2.00 Medium
+3. $2.50 Large
+What size would you like your drink 1-3: 3
+Large Sprite  $2.50 has been added
+What is your choice 1 - 7: 7
+Checking out here is your order details
+1. Large Vault  $2.50
+2. Cowboy Burger
+--- Extras ---
+1 extra sauce
+2 extra lettice
+3 extra patty
+4 extra pickles
+5 extra lettice
+Cowboy Burger costs $8.40
+
+3. Large Sprite  $2.50
+Total cost is: $13.40
+BUILD SUCCESSFUL (total time: 1 minute 48 seconds)
+
+*/
